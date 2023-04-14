@@ -1,0 +1,191 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  height: 1rem;
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  --tw-border-opacity: 1;
+  background-color: rgba(217, 217, 227, 0.8);
+  border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+  border-radius: 9999px;
+  border-width: 1px;
+}
+::-webkit-scrollbar-thumb {
+  --tw-bg-opacity: 1;
+  background-color: rgba(86, 88, 105, var(--tw-bg-opacity));
+}
+body {
+  background: #343541;
+  -webkit-text-size-adjust: 100%;
+  font-family: Söhne, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Ubuntu, Cantarell, Noto Sans, sans-serif, Helvetica Neue, Arial,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  line-height: 2;
+  tab-size: 4;
+}
+body::after {
+  content: '';
+  position: fixed;
+  width: 100%;
+  height: 20%;
+  background: linear-gradient(to top, #00000080, transparent);
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+}
+.block {
+  padding: 12px;
+  border-bottom: 1px solid rgba(32, 33, 35, 0.5);
+}
+.user {
+  background: #343541;
+  color: #e2e5e9;
+}
+.robot {
+  background: #40414e;
+  color: #d1d5db;
+}
+.container {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 12px 0;
+  display: flex;
+  column-gap: 20px;
+  align-items: start;
+}
+.avatar {
+  background: #765bbd;
+  width: 30px;
+  height: 30px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.avatar img {
+  width: 22px;
+  height: 22px;
+}
+.robot .avatar {
+  background: #000;
+}
+.title {
+  font-size: 14px;
+  text-align: center;
+}
+.main::after {
+  content: '';
+  display: block;
+  height: 100px;
+}
+.send {
+  position: fixed;
+  z-index: 100;
+  bottom: 30px;
+  width: 100%;
+  max-width: 768px;
+  background: rgb(64, 65, 79);
+  border-radius: 6px;
+  border: 1px solid rgba(32, 33, 35, 0.5);
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 15px 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  padding-right: 30px;
+}
+.send button {
+  color: rgb(142, 142, 160);
+  border: none;
+  outline: none;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  background: transparent;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+}
+.send button:hover {
+  background: #000;
+}
+.send textarea {
+  display: block;
+  width: 100%;
+  resize: none;
+  outline: none;
+  border: none;
+  font-size: 16px;
+  line-height: 2;
+  margin-right: 30px;
+  color: #fff;
+  max-height: 200px;
+  background: transparent;
+}
+.send .spin {
+  display: none;
+}
+.send.waiting .submit {
+  display: none;
+}
+.send.waiting .spin {
+  display: flex;
+  column-gap: 3px;
+  background: none;
+  cursor: wait;
+}
+.markdown-body {
+  background: inherit;
+}
+.send.waiting .spin span {
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  animation: toggle 0.9s infinite;
+  opacity: 0;
+}
+.send.waiting .spin span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.send.waiting .spin span:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes toggle {
+  30% {
+    opacity: 1;
+  }
+}
+
+.typing .content {
+  position: relative;
+}
+.typing .content::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 16px;
+  background: #d5d9da;
+  animation: toggle 0.6s infinite;
+  opacity: 0;
+  left: var(--x);
+  top: var(--y);
+}
